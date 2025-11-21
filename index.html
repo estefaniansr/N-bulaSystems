@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nébula Systems | Infraestructura Soberana desde el Sur</title>
+    <style>
+        /* --- VARIABLES Y CONFIGURACIÓN GLOBAL --- */
+        :root {
+            --color-primary: #0f172a; /* Azul Oscuro Profundo (Noche austral) */
+            --color-secondary: #0ea5e9; /* Cian Brillante (Hielo/Futuro) */
+            --color-accent: #e2e8f0; /* Blanco Hielo */
+            --color-text: #334155; /* Gris Oscuro para lectura */
+            --color-bg-light: #f8fafc;
+            --font-main: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-bg-light);
+        }
+
+        /* --- TIPOGRAFÍA --- */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--color-accent);
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* --- HERO SECTION (La Portada) --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 5rem 5%;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Efecto sutil de "Nebulosa" o Aurora en el fondo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--color-secondary);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            top: -50px;
+            left: -50px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--color-secondary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--color-secondary);
+            color: white;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background-color: #0284c7;
+        }
+
+        /* --- SOBRE NOSOTROS (ORIGEN) --- */
+        .about {
+            padding: 4rem 5%;
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: var(--color-primary);
+            font-size: 2rem;
+        }
+
+        .tagline {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .about-image {
+            background-color: #e2e8f0;
+            height: 300px;
+            border-radius: 12px;
+            /* Aquí iría una imagen de Río Grande o Servidores */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* --- SERVICIOS --- */
+        .services {
+            padding: 4rem 5%;
+            background-color: var(--color-bg-light);
+            text-align: center;
+        }
+
+        .services h2 {
+            color: var(--color-primary);
+            margin-bottom: 3rem;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: left;
+            border-top: 4px solid var(--color-secondary);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        /* --- DIFERENCIAL / VALORES --- */
+        .values {
+            padding: 4rem 5%;
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .values-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+
+        .value-item {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #020617;
+            color: #94a3b8;
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        /* --- MEDIA QUERIES (Móvil) --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .about { grid-template-columns: 1fr; }
+            nav { display: none; /* Simplificado para el ejemplo */ }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">NÉBULA SYSTEMS</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#filosofia">Filosofía</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Infraestructura Soberana desde el <br><span>Fin del Mundo</span></h1>
+            <p>Soluciones en la nube, seguras y accesibles para PyMEs y organizaciones. Construimos tecnología autónoma desde Río Grande, Tierra del Fuego.</p>
+            <a href="#contacto" class="btn">Transformar mi Organización</a>
+        </div>
+    </section>
+
+    <section class="about" id="filosofia">
+        <div class="about-text">
+            <span class="tagline">Tecnología Federal</span>
+            <h2>Más que un proveedor, un aliado estratégico local.</h2>
+            <p>Fundada por ingenieros y activistas en Tierra del Fuego, Nébula Systems nace para desafiar la centralización tecnológica.</p>
+            <br>
+            <p>Entendemos los desafíos de conectividad del sur. Por eso, ofrecemos alternativas a las grandes corporaciones (GSuite, AWS) garantizando que tus datos estén seguros, privados y gestionados con soporte humano y cercano.</p>
+        </div>
+        <div class="about-image">
+             
+             <br>(Imagen sugerida: Paisaje fueguino o Data Center)
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <h2>Soluciones que no requieren ser experto</h2>
+        <div class="grid-services">
+            <div class="card">
+                <h3>☁️ Entornos Colaborativos</h3>
+                <p>Alternativas autogestionadas a GSuite. Correo, almacenamiento en la nube (Drive) y videollamadas seguras para tu equipo.</p>
+            </div>
+            <div class="card">
+                <h3>🔒 Hosting & Privacidad</h3>
+                <p>Alojamiento web y servidores con soporte local. Tus datos son tuyos: garantizamos privacidad sin letra chica comercial.</p>
+            </div>
+            <div class="card">
+                <h3>⚙️ Automatización de Procesos</h3>
+                <p>Digitalizamos tareas repetitivas administrativas y productivas para que tu PyME u organización ahorre tiempo y recursos.</p>
+            </div>
+            <div class="card">
+                <h3>🎓 Soluciones a Medida</h3>
+                <p>Desarrollo específico para sistemas educativos, cooperativas y ONGs. Tecnología inclusiva adaptada a tu realidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values">
+        <div class="values-container">
+            <div class="value-item">
+                <div class="value-icon">🛡️</div>
+                <h3>Soberanía de Datos</h3>
+                <p>Construimos alternativas seguras frente a los grandes proveedores globales.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🤝</div>
+                <h3>Soporte Local y Humano</h3>
+                <p>Sin bots ni esperas eternas. Atención desde Argentina para Argentina.</p>
+            </div>
+            <div class="value-item">
+                <div class="value-icon">🚀</div>
+                <h3>Simplicidad Técnica</h3>
+                <p>No necesitas infraestructura propia ni saber programar. Nosotros nos encargamos.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <p><strong>Nébula Systems</strong> | Río Grande, Tierra del Fuego, Argentina.</p>
+        <p>Impulsando una cultura digital crítica y autónoma.</p>
+        <br>
+        <p>contacto@nebulasystems.com.ar</p>
+    </footer>
+
+</body>
+</html>
