@@ -167,16 +167,20 @@
             display: block;
         }
 
+        /* --- CÓDIGO DE IMAGEN ACTUALIZADO AQUÍ --- */
         .about-image {
-            background-color: #e2e8f0;
-            height: 300px;
+            height: 400px; /* Aumenté un poco la altura para que luzca mejor */
             border-radius: 12px;
-            /* Aquí iría una imagen de Río Grande o Servidores */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #64748b;
-            font-style: italic;
+            
+            /* Aquí cargamos la imagen.jpg que está en la misma ruta */
+            background-image: url('imagen.jpg');
+            
+            /* "cover" hace que la imagen llene todo el cuadro sin deformarse */
+            background-size: cover; 
+            /* Centra la imagen en el cuadro */
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Sombra para darle profundidad */
         }
 
         /* --- SERVICIOS --- */
@@ -267,6 +271,7 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             .about { grid-template-columns: 1fr; }
+            .about-image { height: 300px; } /* Un poco más baja en celulares */
             nav { display: none; /* Simplificado para el ejemplo */ }
         }
     </style>
@@ -301,10 +306,8 @@
             <br>
             <p>Entendemos los desafíos de conectividad del sur. Por eso, ofrecemos alternativas a las grandes corporaciones (GSuite, AWS) garantizando que tus datos estén seguros, privados y gestionados con soporte humano y cercano.</p>
         </div>
-        <div class="about-image">
-             
-             <br>(Imagen sugerida: Paisaje fueguino o Data Center)
-        </div>
+        
+        <div class="about-image"></div>
     </section>
 
     <section class="services" id="servicios">
